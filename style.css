@@ -1,0 +1,116 @@
+/* ---- Global Dark Theme ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: #111;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    animation: fadeIn 0.7s ease-out;
+}
+
+/* ---- Page Title ---- */
+.title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+
+/* ---- Piano Outer ---- */
+.piano-outer{
+    height: 260px;
+    border: 1px solid #888;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: end;
+    box-shadow: 0 0 20px rgba(255,255,255,0.05);
+    backdrop-filter: blur(3px);
+}
+
+/* ---- Inner Row ---- */
+.piano-inner {
+    display: flex;
+    gap: 10px;
+}
+
+/* ---- Individual Keys ---- */
+.key {
+    width: 60px;
+    height: 180px;
+    border-radius: 8px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    font-size: 20px;
+    color: #888;
+    transition: 0.15s ease;
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover State */
+.key:hover {
+    background: #222;
+    color: #fff;
+    border-color: #555;
+    transform: translateY(-4px);
+}
+
+/* Active State (pressed) */
+.key.active {
+    background: #3a3a3a;
+    color: white;
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,0.1),
+        inset 0 4px 6px rgba(0,0,0,0.4);
+    transform: translateY(6px) scale(0.97);
+}
+
+/* Ripple animation on press */
+.key:active::after,
+.key.active::after {
+    content: "";
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    top: 50%;
+    left: 50%;
+    background: rgba(255,255,255,0.05);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    animation: ripple 0.3s ease-out;
+}
+
+/* ---- Animations ---- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
